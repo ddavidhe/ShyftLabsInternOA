@@ -1,3 +1,4 @@
+import "./Students.css"
 import React, { useState } from 'react';
 
 const Students = () => {

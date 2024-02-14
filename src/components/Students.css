@@ -1,0 +1,49 @@
+/* src/components/Students.css */
+
+/* Container styling */
+.students-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  /* Form styling */
+  form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  
+  label {
+    margin-bottom: 10px;
+  }
+  
+  /* Input styling */
+  input {
+    width: 15%;
+    padding: 8px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    margin-left: 15px;
+    box-sizing: border-box;
+  }
+  
+  /* Button styling */
+  button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    width: 10%;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Display values styling */
+  p {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
