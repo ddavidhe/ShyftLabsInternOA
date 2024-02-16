@@ -16,7 +16,7 @@ app.use( function(req, res, next) {
 });
 
 const studentController = require('./studentController.js');
-app.use('/student', studentController)
+app.use('/students', studentController)
 
 // const courseController = require('./courseController.js');
 // app.use('/courses', courseController)
@@ -32,7 +32,7 @@ app.use((req, res) => {
 
 // error handing custom
 app.use((err, req, res, next) => {
-  let errorCode = err.status || 500; 
+  let errorCode = err.status || 500;
   let errorMessage = err.message || "There was an issue";
 
   res.status(404).json({status: errorCode, message: errorMessage});

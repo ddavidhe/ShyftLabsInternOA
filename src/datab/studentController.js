@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 
 // POST
 router.post('/', (req, res) =>{
-    console.log( 'POST /student' );
+    console.log( 'POST /students' );
     req.body["id"] = uuidv4()
     data.push(req.body)
     res.status(200).json(data)
@@ -28,7 +28,7 @@ router.delete('/', (req, res) =>{
 
 // UPDATE one student
 router.put('/:id', (req, res) => {
-    console.log( 'PUT /student/:id' );
+    console.log( 'PUT /students/:id' );
     let index = data.map(student => student.id).indexOf(req.params.id);
     if (index > -1) {
         data[index].firstName = req.body.firstName
@@ -42,7 +42,7 @@ router.put('/:id', (req, res) => {
 
 // DELETE one student
 router.delete('/:id', (req, res) =>{
-    console.log( 'DELETE /student/:id' );
+    console.log( 'DELETE /students/:id' );
     data = data.filter(student => student.id !== req.params.id)
     res.status(200).json(data)
 })
