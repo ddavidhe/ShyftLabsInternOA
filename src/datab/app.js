@@ -15,11 +15,11 @@ app.use( function(req, res, next) {
   next();
 });
 
-const studentController = require('./studentController.js');
+const studentController = require('./studentsController.js');
 app.use('/students', studentController)
 
-// const courseController = require('./courseController.js');
-// app.use('/courses', courseController)
+const courseController = require('./coursesController.js');
+app.use('/courses', courseController)
 
 app.get('/health', (req, res) => {
     res.json({status: 200, message: "HEALTHY"})

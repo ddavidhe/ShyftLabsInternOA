@@ -2,7 +2,7 @@ function fetchData(){
     console.log("Calling fetchData")
 
     fetchStudentData()
-    // fetchCourseData()
+    fetchCourseData()
 }
 
 function fetchStudentData() {

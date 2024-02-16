@@ -1,5 +1,5 @@
 import "./Students.css"
-import React, { useState } from 'react';
+import React, { useEffect, useState, } from 'react';
 
 const Students = () => {
   const [FirstNameValue, setFirstNameValue] = useState('');
@@ -53,6 +53,36 @@ const Students = () => {
     }
   };
 
+  const fetchStudentData = async () => {
+    console.log("Calling fetchStudentData");
+    let tableBody = document.getElementById('student-table-body');
+    tableBody.innerHTML = '';
+
+    try {
+      const response = await fetch("http://localhost:3000/students");
+      const students = await response.json();
+
+      students.forEach(student => {
+        let tableRow = document.createElement('tr');
+        const tableData = `
+          <td>${student.firstName}</td>
+          <td>${student.familyName}</td>
+          <td>${student.DOB}</td>
+        `;
+        tableRow.insertAdjacentHTML('beforeend', tableData);
+        tableBody.appendChild(tableRow);
+      });
+
+      console.log(students);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchStudentData();
+  }, []);
+
   return (
     <div>
       <h2>Students</h2>
@@ -72,11 +102,15 @@ const Students = () => {
         <button type="submit">Submit</button>
       </form>
 
+      <table>
+        <tbody id="student-table-body"></tbody>
+      </table>
+      
       {/* Displaying the input values (optional) */}
       <p>First Name Value: {FirstNameValue}</p>
       <p>Family Name Value: {FamilyNameValue}</p>
       <p>Date Value: {dateValue}</p>
-      <script src="indux.js"></script>
+
     </div>
   );
 };
