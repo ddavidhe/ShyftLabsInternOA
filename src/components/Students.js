@@ -76,6 +76,7 @@ const Students = () => {
       <p>First Name Value: {FirstNameValue}</p>
       <p>Family Name Value: {FamilyNameValue}</p>
       <p>Date Value: {dateValue}</p>
+      <script src="indux.js"></script>
     </div>
   );
 };

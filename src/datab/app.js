@@ -37,3 +37,11 @@ app.use((err, req, res, next) => {
 
   res.status(404).json({status: errorCode, message: errorMessage});
 })
+
+// Run server
+const port = 3000;
+app.listen( port, () => {
+  console.log( `App running at http://localhost:${port}`);
+});
+
+module.exports = app;
