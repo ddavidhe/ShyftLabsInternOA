@@ -7,11 +7,11 @@ const ResultsTable = ({ dataFetched }) => {
     // Fetch students when the component mounts
     const fetchResults = async () => {
       const response = await fetch('http://localhost:3000/results');
-      const courses = await response.json();
-      setCourses(courses);
+      const results = await response.json();
+      setResults(results);
     };
 
-    fetchCourses();
+    fetchResults();
   }, [dataFetched]); // Empty dependency array means this effect runs once on mount
 
   return (
@@ -19,12 +19,16 @@ const ResultsTable = ({ dataFetched }) => {
       <thead>
         <tr>
           <th>Course Name</th>
+          <th>Student Name</th>
+          <th>Score</th>
         </tr>
       </thead>
       <tbody>
-        {courses.map((courses, index) => (
+        {results.map((results, index) => (
           <tr key={index}>
-            <td>{courses.courseName}</td>
+            <td>{results.courseName}</td>
+            <td>{results.studentName}</td>
+            <td>{results.score}</td>
           </tr>
         ))}
       </tbody>
@@ -32,4 +36,4 @@ const ResultsTable = ({ dataFetched }) => {
   );
 };
 
-export default CoursesTable;
+export default ResultsTable;
