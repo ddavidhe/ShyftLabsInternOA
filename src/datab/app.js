@@ -20,6 +20,9 @@ app.use('/students', studentController)
 const courseController = require('./coursesController.js');
 app.use('/courses', courseController)
 
+const resultsController = require('./resultsController.js');
+app.use('/results', resultsController)
+
 app.get('/health', (req, res) => {
     res.json({status: 200, message: "HEALTHY"})
 })
