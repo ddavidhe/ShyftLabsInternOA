@@ -9,7 +9,7 @@ Created with React and Express.js
 This will display the front-end webpage.
 Open [http://localhost:4000](http://localhost:4000) to view it in a browser.
 
-2. In a separate terminal, enter into /backend, and run:
+2. In a separate terminal, enter into the *backend* directory, and run:
 
 ### npm start
 
@@ -20,3 +20,4 @@ There are 3 endpoints:
 - /courses
 - /results
 
+Any other endpoint will result in a 404 error.
