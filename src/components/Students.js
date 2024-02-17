@@ -18,6 +18,33 @@ const Students = () => {
     setDateValue(e.target.value);
   };
 
+  async function addStudent(firstName, familyName, dateValue) {
+    console.log("Calling addStudent")
+    console.log("Date of birth value: ", dateValue);
+    const jsonData = JSON.stringify({firstName, familyName, dateValue});
+  
+    try {
+      console.log("Sending POST request to http://localhost:3000/students");
+      const response = await fetch('http://localhost:3000/students', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: jsonData
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      console.log("POST request successful, received response: ", data);
+  
+      console.log("Calling fetchStudentData");
+      await fetchStudentData();
+    } catch (error) {
+      console.error("Error in addStudent: ", error);
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -79,10 +106,41 @@ const Students = () => {
     }
   };
 
-  useEffect(() => {
-    fetchStudentData();
-  }, []);
+  window.onload = async () => {
+    const fetchStudentData = async () => {
+      console.log("Calling fetchStudentData");
+      let tableBody = document.getElementById('student-table-body');
+      if (!tableBody) {
+        console.error('Table body not found');
+        return;
+      }
+      tableBody.innerHTML = '';
+  
+      try {
+        const response = await fetch("http://localhost:3000/students");
+        const students = await response.json();
+  
+        students.forEach(student => {
+          let tableRow = document.createElement('tr');
+          const tableData = `
+            <td>${student.firstName}</td>
+            <td>${student.familyName}</td>
+            <td>${student.DOB}</td>
+          `;
+          tableRow.insertAdjacentHTML('beforeend', tableData);
+          tableBody.appendChild(tableRow);
+        });
+  
+        console.log(students);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    await fetchStudentData();
+  };
 
+  
   return (
     <div>
       <h2>Students</h2>
