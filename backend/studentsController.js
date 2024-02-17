@@ -1,22 +1,22 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-let data = require('./students');
-const { v4: uuidv4 } = require('uuid');
+let data = require("./students");
+const { v4: uuidv4 } = require("uuid");
 
-// GET 
-router.get('/', (req, res) => {
-    console.log( 'GET /students' );
-    console.log(data)
-    res.status(200).json(data);
-  });
+// GET
+router.get("/", (req, res) => {
+  console.log("GET /students");
+  console.log(data);
+  res.status(200).json(data);
+});
 
 // POST
-router.post('/', (req, res) =>{
-    console.log( 'POST /students' );
-    req.body["id"] = uuidv4()
-    data.push(req.body)
-    res.status(200).json(data)
-})
+router.post("/", (req, res) => {
+  console.log("POST /students");
+  req.body["id"] = uuidv4();
+  data.push(req.body);
+  res.status(200).json(data);
+});
 
 // // DELETE all students
 // router.delete('/', (req, res) =>{
@@ -47,4 +47,4 @@ router.post('/', (req, res) =>{
 //     res.status(200).json(data)
 // })
 
-module.exports = router
+module.exports = router;
