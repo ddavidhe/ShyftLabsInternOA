@@ -26,19 +26,19 @@ router.delete('/', (req, res) =>{
 
 })
 
-// UPDATE one student
-router.put('/:id', (req, res) => {
-    console.log( 'PUT /students/:id' );
-    let index = data.map(student => student.id).indexOf(req.params.id);
-    if (index > -1) {
-        data[index].firstName = req.body.firstName
-        data[index].familyName = req.body.familyName
-        data[index].DOB = req.body.DOB
-        res.json(data[index]);
-    } else {
-        next ({status: 404, message: "Student not found!"})
-    }
-})
+// // UPDATE one student
+// router.put('/:id', (req, res) => {
+//     console.log( 'PUT /students/:id' );
+//     let index = data.map(student => student.id).indexOf(req.params.id);
+//     if (index > -1) {
+//         data[index].firstName = req.body.firstName
+//         data[index].familyName = req.body.familyName
+//         data[index].DOB = req.body.DOB
+//         res.json(data[index]);
+//     } else {
+//         next ({status: 404, message: "Student not found!"})
+//     }
+// })
 
 // DELETE one student
 router.delete('/:id', (req, res) =>{

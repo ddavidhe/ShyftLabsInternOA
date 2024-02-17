@@ -1,7 +1,6 @@
 
 const express = require('express');
 const app = express();
-const data = require('./students.js');
 const cors = require('cors')
 
 // Use JSON and encode URLs

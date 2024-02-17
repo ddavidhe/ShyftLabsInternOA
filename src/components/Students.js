@@ -1,10 +1,12 @@
 import "./Students.css"
-import React, { useEffect, useState, } from 'react';
+import StudentsTable from "./studenttable";
+import React, { useState } from 'react';
 
 const Students = () => {
   const [FirstNameValue, setFirstNameValue] = useState('');
   const [FamilyNameValue, setFamilyNameValue] = useState('');
   const [dateValue, setDateValue] = useState('');
+  const [dataFetched, setDataFetched] = useState(0);
 
   const handleFirstNameChange = (e) => {
     setFirstNameValue(e.target.value);
@@ -18,10 +20,10 @@ const Students = () => {
     setDateValue(e.target.value);
   };
 
-  async function addStudent(firstName, familyName, dateValue) {
+  async function addStudent(firstName, familyName, DOB) {
     console.log("Calling addStudent")
-    console.log("Date of birth value: ", dateValue);
-    const jsonData = JSON.stringify({firstName, familyName, dateValue});
+    console.log("Date of birth value: ", DOB);
+    const jsonData = JSON.stringify({firstName, familyName, DOB});
   
     try {
       console.log("Sending POST request to http://localhost:3000/students");
@@ -75,6 +77,7 @@ const Students = () => {
       setFirstNameValue('');
       setFamilyNameValue('');
       setDateValue('');
+      addStudent(FirstNameValue, FamilyNameValue, dateValue);
     } else {
       alert('The submitted date must be at least 10 years in the past');
     }
@@ -82,64 +85,17 @@ const Students = () => {
 
   const fetchStudentData = async () => {
     console.log("Calling fetchStudentData");
-    let tableBody = document.getElementById('student-table-body');
-    tableBody.innerHTML = '';
-
     try {
       const response = await fetch("http://localhost:3000/students");
       const students = await response.json();
 
-      students.forEach(student => {
-        let tableRow = document.createElement('tr');
-        const tableData = `
-          <td>${student.firstName}</td>
-          <td>${student.familyName}</td>
-          <td>${student.DOB}</td>
-        `;
-        tableRow.insertAdjacentHTML('beforeend', tableData);
-        tableBody.appendChild(tableRow);
-      });
+      setDataFetched(dataFetched + 1);
 
       console.log(students);
     } catch (error) {
       console.error(error);
     }
   };
-
-  window.onload = async () => {
-    const fetchStudentData = async () => {
-      console.log("Calling fetchStudentData");
-      let tableBody = document.getElementById('student-table-body');
-      if (!tableBody) {
-        console.error('Table body not found');
-        return;
-      }
-      tableBody.innerHTML = '';
-  
-      try {
-        const response = await fetch("http://localhost:3000/students");
-        const students = await response.json();
-  
-        students.forEach(student => {
-          let tableRow = document.createElement('tr');
-          const tableData = `
-            <td>${student.firstName}</td>
-            <td>${student.familyName}</td>
-            <td>${student.DOB}</td>
-          `;
-          tableRow.insertAdjacentHTML('beforeend', tableData);
-          tableBody.appendChild(tableRow);
-        });
-  
-        console.log(students);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-  
-    await fetchStudentData();
-  };
-
   
   return (
     <div>
@@ -160,15 +116,7 @@ const Students = () => {
         <button type="submit">Submit</button>
       </form>
 
-      <table>
-        <tbody id="student-table-body"></tbody>
-      </table>
-      
-      {/* Displaying the input values (optional) */}
-      <p>First Name Value: {FirstNameValue}</p>
-      <p>Family Name Value: {FamilyNameValue}</p>
-      <p>Date Value: {dateValue}</p>
-
+      <StudentsTable dataFetched={dataFetched} />
     </div>
   );
 };
