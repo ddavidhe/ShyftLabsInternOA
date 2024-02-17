@@ -1,5 +1,5 @@
-import './tables.css'
-import React, { useState, useEffect } from 'react';
+import "./tables.css";
+import React, { useState, useEffect } from "react";
 
 const ResultsTable = ({ dataFetched }) => {
   const [results, setResults] = useState([]); // Initialize students as an empty array
@@ -7,7 +7,7 @@ const ResultsTable = ({ dataFetched }) => {
   useEffect(() => {
     // Fetch students when the component mounts
     const fetchResults = async () => {
-      const response = await fetch('http://localhost:3000/results');
+      const response = await fetch("http://localhost:3000/results");
       const results = await response.json();
       setResults(results);
     };

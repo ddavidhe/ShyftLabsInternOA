@@ -1,12 +1,11 @@
-
 .select-container {
-    display: flex;
-    align-items: left;
-    margin-bottom: 10px;
+  display: flex;
+  align-items: left;
+  margin-bottom: 10px;
 }
 
 .select-container label {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 select {
