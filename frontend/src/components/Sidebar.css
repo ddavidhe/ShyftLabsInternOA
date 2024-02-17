@@ -22,3 +22,20 @@
   text-decoration: none;
   color: #333;
 }
+
+.link-container {
+  padding: 10px; /* Add some padding around the links */
+  transition: background-color 0.3s ease; /* Transition effect for the background color change */
+}
+
+.link-container:hover {
+  background-color: #4caf50; /* Background color of the box when hovered */
+}
+
+.link-container a {
+  color: #000; /* Initial color of the links */
+}
+
+.link-container:hover a {
+  color: #fff; /* Color of the links when the box is hovered */
+}
