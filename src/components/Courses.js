@@ -25,7 +25,6 @@ const Courses = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const data = await response.json();
       await fetchCourseData();
       toast.success("Course added successfully!")
     } catch (error) {
@@ -52,6 +51,7 @@ const Courses = () => {
       const courses = await response.json();
       
       setDataFetched(dataFetched + 1);
+      console.log(courses);
     } catch (error) {
       console.error(error);
     }

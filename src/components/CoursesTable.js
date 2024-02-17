@@ -7,7 +7,7 @@ const CoursesTable = ({ dataFetched }) => {
     // Fetch students when the component mounts
     const fetchCourses = async () => {
       const response = await fetch('http://localhost:3000/courses');
-      const students = await response.json();
+      const courses = await response.json();
       setCourses(courses);
     };
 
@@ -24,7 +24,7 @@ const CoursesTable = ({ dataFetched }) => {
       <tbody>
         {courses.map((courses, index) => (
           <tr key={index}>
-            <td>{courses.name}</td>
+            <td>{courses.courseName}</td>
           </tr>
         ))}
       </tbody>
