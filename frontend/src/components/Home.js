@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div style={{ marginLeft: "300px" }}>
       <h2>Home Page</h2>
-      <p>This is the home page content.</p>
+      <p>Welcome to the ShyftLabs Student Result Management System.</p>
     </div>
   );
 };
