@@ -1,4 +1,4 @@
-import "./Students.css"
+import './tables.css'
 import CoursesTable from "./CoursesTable";
 import React, { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
@@ -59,7 +59,7 @@ const Courses = () => {
 
 
   return (
-    <div>
+    <div style={{ marginLeft: '300px'}}>
       <h2>Courses</h2>
       <ToastContainer position="top-right" autoClose={1500} />
       <form onSubmit={handleSubmit}>

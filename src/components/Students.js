@@ -100,7 +100,7 @@ const Students = () => {
   };
   
   return (
-    <div>
+    <div style={{ marginLeft: '300px'}}>
       <h2>Students</h2>
       <ToastContainer position="top-right" autoClose={1500}/>
       <form onSubmit={handleSubmit}>

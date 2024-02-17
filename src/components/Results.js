@@ -1,4 +1,4 @@
-import "./Students.css"
+import "./Results.css"
 import ResultsTable from "./ResultsTable";
 import React, { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
@@ -86,43 +86,50 @@ const Results = () => {
   }
 
   return (
-    <div>
+    <div style={{ marginLeft: '300px'}}>
+
       <h2>Results</h2>
       <ToastContainer position="top-right" autoClose={1500} />
       <form onSubmit={handleSubmit}>
-        <label>
-          Student:
-          <select value={studentNameValue} onChange={e => setStudentNameValue(e.target.value)}>
-            <option value="" disabled selected>Select your option</option>
-            {students.map((student, index) => (
-              <option key={index} value={student.firstName}>
-                {student.firstName}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Course:
-          <select value={courseNameValue} onChange={e => setCourseNameValue(e.target.value)}>
-            <option value="" disabled selected>Select your option</option>
-            {courses.map((course, index) => (
-              <option key={index} value={course.courseName}>
-                {course.courseName}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Score:
-          <select value={scores} onChange={e => setScores(e.target.value)}>
-            <option value="" disabled selected>Select your option</option>
-            {listScores.map((score, index) => (
-              <option key={index} value={score}>
-                {score}
-              </option>
-            ))}
-          </select>
-        </label>
+        <div className="select-container">
+          <label>
+            Student:
+            <select value={studentNameValue} onChange={e => setStudentNameValue(e.target.value)}>
+              <option value="" disabled selected>Select your option</option>
+              {students.map((student, index) => (
+                <option key={index} value={student.firstName}>
+                  {student.firstName}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+        <div className="select-container">
+          <label>
+            Course:
+            <select value={courseNameValue} onChange={e => setCourseNameValue(e.target.value)}>
+              <option value="" disabled selected>Select your option</option>
+              {courses.map((course, index) => (
+                <option key={index} value={course.courseName}>
+                  {course.courseName}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+        <div className="select-container">
+          <label>
+            Score:
+            <select value={scores} onChange={e => setScores(e.target.value)}>
+              <option value="" disabled selected>Select your option</option>
+              {listScores.map((score, index) => (
+                <option key={index} value={score}>
+                  {score}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
         <button type="submit">Submit</button>
       </form>
 
