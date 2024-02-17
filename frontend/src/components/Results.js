@@ -3,6 +3,7 @@ import ResultsTable from "./ResultsTable";
 import React, { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const Results = () => {
   const [courseNameValue, setCourseNameValue] = useState("");
   const [studentNameValue, setStudentNameValue] = useState("");
@@ -77,11 +78,17 @@ const Results = () => {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
+
     if (!studentNameValue || !courseNameValue || !scores) {
       toast.error("Please fill in all fields before submitting.");
       return;
     }
     addResult(courseNameValue, studentNameValue, scores);
+
+    setStudentNameValue("");
+    setCourseNameValue("");
+    setScores("");
   };
 
   return (

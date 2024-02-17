@@ -1,5 +1,3 @@
-/* src/components/Students.css */
-
 /* Container styling */
 .students-container {
   max-width: 600px;
@@ -32,7 +30,8 @@ button {
   padding: 10px;
   background-color: #4caf50;
   color: white;
-  width: 10%;
+  min-width: 60px;
+  max-width: 10%;
   border: none;
   cursor: pointer;
 }
