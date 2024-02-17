@@ -1,7 +1,7 @@
 let courses = [
-    {
-        courseName: "MATH135"
-    }
+  {
+    courseName: "MATH135",
+  },
 ];
 
 module.exports = courses;
