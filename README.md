@@ -2,7 +2,7 @@
 
 Created with React and Express.js
 
-1. In the project directory, run:
+1. In a terminal, cd into the **frontend** directory, and run:
 
 ### npm start
 
