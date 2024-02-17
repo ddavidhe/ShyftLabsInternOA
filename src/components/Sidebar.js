@@ -7,9 +7,9 @@ const Sidebar = () => {
     <div className="sidebar">
       <ul>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/Students">Students</Link></li>
-        <li><Link to="/page2">Page 2</Link></li>
-        <li><Link to="/page3">Page 3</Link></li>
+        <li><Link to="/students">Students</Link></li>
+        <li><Link to="/courses">Courses</Link></li>
+        <li><Link to="/results">Results</Link></li>
       </ul>
     </div>
   );

@@ -21,7 +21,6 @@ const StudentsTable = ({ dataFetched }) => {
           <th>First Name</th>
           <th>Family Name</th>
           <th>DOB</th>
-          {/* Add more columns as needed */}
         </tr>
       </thead>
       <tbody>

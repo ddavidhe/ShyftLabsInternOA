@@ -18,13 +18,13 @@ router.post('/', (req, res) =>{
     res.status(200).json(data)
 })
 
-// DELETE all students
-router.delete('/', (req, res) =>{
-    console.log( 'DELETE /students' );
-    data=[]
-    res.status(200).json(data)
+// // DELETE all students
+// router.delete('/', (req, res) =>{
+//     console.log( 'DELETE /students' );
+//     data=[]
+//     res.status(200).json(data)
 
-})
+// })
 
 // // UPDATE one student
 // router.put('/:id', (req, res) => {
@@ -40,11 +40,11 @@ router.delete('/', (req, res) =>{
 //     }
 // })
 
-// DELETE one student
-router.delete('/:id', (req, res) =>{
-    console.log( 'DELETE /students/:id' );
-    data = data.filter(student => student.id !== req.params.id)
-    res.status(200).json(data)
-})
+// // DELETE one student
+// router.delete('/:id', (req, res) =>{
+//     console.log( 'DELETE /students/:id' );
+//     data = data.filter(student => student.id !== req.params.id)
+//     res.status(200).json(data)
+// })
 
 module.exports = router

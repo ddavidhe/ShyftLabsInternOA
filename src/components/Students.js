@@ -1,6 +1,8 @@
 import "./Students.css"
-import StudentsTable from "./studenttable";
+import StudentsTable from "./StudentsTable";
 import React, { useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Students = () => {
   const [FirstNameValue, setFirstNameValue] = useState('');
@@ -39,9 +41,9 @@ const Students = () => {
   
       const data = await response.json();
       console.log("POST request successful, received response: ", data);
-  
       console.log("Calling fetchStudentData");
       await fetchStudentData();
+      toast.success("Student added successfully!")
     } catch (error) {
       console.error("Error in addStudent: ", error);
     }
@@ -52,7 +54,7 @@ const Students = () => {
 
     // Simple validation check for other fields
     if (!FirstNameValue || !FamilyNameValue || !dateValue) {
-      alert('Please fill in all fields before submitting.');
+      toast.error("Please fill in all fields before submitting.")
       return;
     }
 
@@ -64,7 +66,7 @@ const Students = () => {
 
     // doesn't actually run since date's auto correct themsleves
     if ((inputDateObject.getMonth() + 1 > 12) || (inputDateObject.getDate() > 31)) {
-      alert('dates are invalid');
+      toast.error("The submitted date is invalid.")
       return;
     }
 
@@ -79,7 +81,7 @@ const Students = () => {
       setDateValue('');
       addStudent(FirstNameValue, FamilyNameValue, dateValue);
     } else {
-      alert('The submitted date must be at least 10 years in the past');
+      toast.warning("The submitted date must be at least 10 years in the past")
     }
   };
 
@@ -100,6 +102,7 @@ const Students = () => {
   return (
     <div>
       <h2>Students</h2>
+      <ToastContainer position="top-right" autoClose={1500}/>
       <form onSubmit={handleSubmit}>
         <label>
           First Name:
