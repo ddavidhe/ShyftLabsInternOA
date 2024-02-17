@@ -9,11 +9,11 @@ Created with React and Express.js
 This will display the front-end webpage.
 Open [http://localhost:4000](http://localhost:4000) to view it in a browser.
 
-2. In a separate terminal, enter into /ShyftLabsInternOA/src/datab, and run:
+2. In a separate terminal, enter into /backend, and run:
 
 ### npm start
 
-This will begin the data base.
+This will load the data base.
 Open [http://localhost:3000](http://loaclhost:3000) to view it in your browser.
 There are 3 endpoints:
 - /students
