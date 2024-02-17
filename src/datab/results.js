@@ -1,7 +1,7 @@
 let results = [
     {
-        courseName: "CS250",
-        studentName: "Rui Ran Chen",
+        courseName: "MATH135",
+        studentName: "John",
         score: "A",
     }
 ];

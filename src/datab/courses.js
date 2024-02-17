@@ -1,6 +1,6 @@
 let courses = [
     {
-        courseName: "math101"
+        courseName: "MATH135"
     }
 ];
 
