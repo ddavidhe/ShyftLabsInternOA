@@ -25,7 +25,6 @@ const CoursesTable = ({ dataFetched }) => {
         {courses.map((courses, index) => (
           <tr key={index}>
             <td>{courses.name}</td>
-            {/* Add more cells as needed */}
           </tr>
         ))}
       </tbody>
