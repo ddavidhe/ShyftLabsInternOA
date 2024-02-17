@@ -44,13 +44,56 @@ const Results = () => {
     fetchCourses();
   }, []);
 
+
+  async function addResult(courseName, studentName, score) {
+    const jsonData = JSON.stringify({ courseName, studentName, score });
+
+    try {
+      const response = await fetch('http://localhost:3000/results', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: jsonData
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      await fetchResultData();
+      toast.success("Result added successfully!")
+    } catch (error) {
+      console.error("Error in addResult: ", error);
+    }
+  }
+
+  const fetchResultData = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/results');
+      const results = await response.json();
+      setDataFetched(dataFetched + 1);
+      console.log(results);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const handleSubmit = (e) => {
+    if (!studentNameValue || !courseNameValue || !scores) {
+      toast.error("Please fill in all fields before submitting.")
+      return;
+    }
+    addResult(courseNameValue, studentNameValue, scores);
+  }
+
   return (
     <div>
       <h2>Results</h2>
-      <form>
+      <ToastContainer position="top-right" autoClose={1500} />
+      <form onSubmit={handleSubmit}>
         <label>
           Student:
           <select value={studentNameValue} onChange={e => setStudentNameValue(e.target.value)}>
+            <option value="" disabled selected>Select your option</option>
             {students.map((student, index) => (
               <option key={index} value={student.firstName}>
                 {student.firstName}
@@ -61,6 +104,7 @@ const Results = () => {
         <label>
           Course:
           <select value={courseNameValue} onChange={e => setCourseNameValue(e.target.value)}>
+            <option value="" disabled selected>Select your option</option>
             {courses.map((course, index) => (
               <option key={index} value={course.courseName}>
                 {course.courseName}
@@ -71,6 +115,7 @@ const Results = () => {
         <label>
           Score:
           <select value={scores} onChange={e => setScores(e.target.value)}>
+            <option value="" disabled selected>Select your option</option>
             {listScores.map((score, index) => (
               <option key={index} value={score}>
                 {score}
@@ -78,7 +123,10 @@ const Results = () => {
             ))}
           </select>
         </label>
+        <button type="submit">Submit</button>
       </form>
+
+      <ResultsTable dataFetched={dataFetched} />
     </div>
   );
 }
